@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Mahasiswa;
+use DataTables;
 
 class MahasiswaController extends Controller
 {
@@ -16,8 +18,14 @@ class MahasiswaController extends Controller
     {
         // $mahasiswa = DB::table('students')->get();
         //dump($mahasiswa);
-        $mahasiswa = \App\Mahasiswa::all();
-        return view('mahasiswa.index', ['mahasiswa' => $mahasiswa]);
+        // $mahasiswa = Mahasiswa::all();
+        // return view('mahasiswa.index', ['mahasiswa' => $mahasiswa]);
+        return view('mahasiswa.index');
+    }
+
+    public function fetch()
+    {
+        return DataTables::of(Mahasiswa::all())->make(true);
     }
 
     /**

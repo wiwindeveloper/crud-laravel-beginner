@@ -123,4 +123,10 @@ class StudentsController extends Controller
         Student::destroy($student->id);
         return redirect('/students')->with('status', 'Data Mahasiswa berhasil dihapus!');
     }
+
+    public function hapus(Student $student)
+    {
+        Student::destroy($student->id);
+        return redirect('/tabulator')->with('status', 'Data Mahasiswa berhasil dihapus!');
+    }
 }
